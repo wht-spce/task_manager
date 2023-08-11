@@ -3,6 +3,7 @@ FROM python:3.9-slim-buster
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONUNBUFFERED=1 \
     POETRY_HOME="/opt/poetry" \
+    POETRY_VERSION=1.5.1 \
     POETRY_VIRTUALENVS_CREATE=false
 
 RUN apt-get update -qq \
@@ -28,7 +29,7 @@ RUN apt-get update -qq \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && truncate -s 0 /var/log/*log
 
-RUN curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.1.7 python3 -
+RUN curl -sSL https://install.python-poetry.org | python3 -
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
 RUN mkdir -p /app
