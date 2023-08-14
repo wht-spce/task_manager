@@ -30,7 +30,7 @@ RUN apt-get update -qq \
     && truncate -s 0 /var/log/*log
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
+ENV PATH="$POETRY_HOME/bin:$PATH"
 
 RUN mkdir -p /app
 WORKDIR /app
